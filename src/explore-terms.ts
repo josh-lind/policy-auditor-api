@@ -27,8 +27,9 @@ class ExploreTermHandler {
 
     /** Gets the ExploreTerm for the given term string, or null if the term should be ignored */
     getExploreTerm(term: string): ExploreTerm {
-        if (this.articleTitles.has(term)) {
-            const [articleTitle, articleLink] = this.articleTitles.get(term);
+        const mapVal = this.articleTitles.get(term);
+        if (mapVal) {
+            const [articleTitle, articleLink] = mapVal;
             const articleSummary = this.summaries.get(articleTitle) || "";
 
             return {
@@ -98,8 +99,9 @@ class ExploreTermHandler {
                 );
             }
 
-            if (this.hasTerm(term) && !this.shouldIgnoreTerm(term)) {
-                const [title] = this.articleTitles.get(term);
+            const mapVal = this.articleTitles.get(term);
+            if (mapVal && !this.shouldIgnoreTerm(term)) {
+                const [title] = mapVal;
                 if (!this.summaries.get(title)) {
                     console.log(
                         `WARN: Missing article summary for "${title}"`

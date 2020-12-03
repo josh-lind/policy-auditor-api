@@ -43,8 +43,10 @@ app.use(function (req, res, next) {
 app.use("/api", API);
 
 /* Start the app and listen for connections on the port specified in the environment file */
-app.listen(environment.port, () => {
+const port = process.env.PORT || environment.port;
+const url = process.env.baseUrl || environment.baseUrl;
+app.listen(port, () => {
     console.log(
-        `Pizza Bot Backend is listening at http://${environment.baseUrl}:${environment.port}/api`
+        `Pizza Bot Backend is listening at http://${url}:${port}/api`
     );
 });

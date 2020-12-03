@@ -1,5 +1,5 @@
 export const environment = {
-    baseUrl: "https://evening-gorge-46233.herokuapp.com/",
+    baseUrl: "https://evening-gorge-46233.herokuapp.com",
     port: 3000,
     discovery: {
         apiKey: "zETMdVzuCvBLUxX8dBubIlrx4uXMqAoWjERpCRmZGFoX",

@@ -223,7 +223,7 @@ function getDocumentUrl(filename: string, subject: string): string {
     );
     console.log(`getDocumentUrl exists(${exists}) - ${filename} - ${subject}`)
     if (exists) {
-        return `http://${environment.baseUrl}:${environment.port}/api/doc/${subject}/${filename}`;
+        return `http://${environment.baseUrl}:${process.env.PORT || environment.port}/api/doc/${subject}/${filename}`;
     } else {
         return "";
     }

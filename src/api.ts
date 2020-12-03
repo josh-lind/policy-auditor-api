@@ -221,9 +221,9 @@ function getDocumentUrl(filename: string, subject: string): string {
     const exists = fs.existsSync(
         path.join(__dirname, "..", "assets", "documents", subject, filename)
     );
-    console.log(`getDocumentUrl exists(${exists}) - ${filename} - ${subject}`)
+    // console.log(`getDocumentUrl exists(${exists}) - ${filename} - ${subject}`)
     if (exists) {
-        return `http://${environment.baseUrl}/api/doc/${subject}/${filename}`;
+        return `${environment.baseUrl}/api/doc/${subject}/${filename}`;
     } else {
         return "";
     }

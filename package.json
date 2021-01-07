@@ -21,6 +21,7 @@
   "author": "Deeper Blue",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "ibm-watson": "^5.7.0",
     "install": "^0.13.0",

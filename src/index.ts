@@ -9,36 +9,40 @@ import { checkDisplayNames } from "./lib/startup";
 checkDisplayNames();
 
 /* Create a new Express Application */
+const cors = require('cors');
 const app = express();
 
 // Parse POST request bodies
 app.use(bodyParser.json());
 
-// Add headers
-app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    // res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.setHeader("Access-Control-Allow-Origin", "https://policy-auditor.herokuapp.com");
+const corsOptions = { origin: 'https://policy-auditor.herokuapp.com'};
+app.use(cors(corsOptions));
 
-    // // Request methods you wish to allow
-    // res.setHeader(
-    //     "Access-Control-Allow-Methods",
-    //     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-    // );
+// // Add headers
+// app.use(function (req, res, next) {
+//     // Website you wish to allow to connect
+//     // res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+//     res.setHeader("Access-Control-Allow-Origin", "https://policy-auditor.herokuapp.com");
 
-    // // Request headers you wish to allow
-    // res.setHeader(
-    //     "Access-Control-Allow-Headers",
-    //     "X-Requested-With,content-type"
-    // );
+//     // // Request methods you wish to allow
+//     // res.setHeader(
+//     //     "Access-Control-Allow-Methods",
+//     //     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+//     // );
 
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    // res.setHeader('Access-Control-Allow-Credentials', true);
+//     // // Request headers you wish to allow
+//     // res.setHeader(
+//     //     "Access-Control-Allow-Headers",
+//     //     "X-Requested-With,content-type"
+//     // );
 
-    // Pass to next layer of middleware
-    next();
-});
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     // res.setHeader('Access-Control-Allow-Credentials', true);
+
+//     // Pass to next layer of middleware
+//     next();
+// });
 
 /* All routes prefixed with /api will be directed to the API router */
 app.use("/api", API);
